@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +10,9 @@
 <title>Palatka | Responsive HTML 5 Template</title>
 
 <!-- Stylesheets -->
-<link href="css/style.css" rel="stylesheet">
-<link href="css/responsive.css" rel="stylesheet">
-<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
 </head>
 
@@ -28,29 +30,14 @@
     <header class="main-header">
 
         <!-- header upper -->
-        <div class="header-upper">
-            <div class="container">
-                <div class="top-left">
-                    <i class="fa fa-phone">&nbsp;Call Now For Free Estimate!&nbsp;<span>(320) 987-6543</span></i>
-                </div>
-                <div class="top-right">
-                    <ul class="social-top">
-                        <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                        <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest-square"></i></a></li>
-                    </ul>
-                </div>             
-            </div>
-        </div>
+        
         <!-- end header upper -->
 
         <!-- header lower -->     
         <div class="header-lower">
             <div class="container">
                 <div class="logo-box">
-                    <a href="index.html"><figure><img src="images/home/logo.png" alt=""></figure></a>
+                    <a href="index.html"><figure><img src="{% static 'images/home/logo.png' %}" alt=""></figure></a>
                 </div>
                 <div class="menu-bar">
                     <nav class="main-menu">
@@ -117,7 +104,7 @@
         <div class="sticky-header">
             <div class="container">
                 <div class="logo-box">
-                    <a href="index.html"><figure><img src="images/home/logo.png" alt=""></figure></a>
+                    <a href="index.html"><figure><img src="{% static 'images/home/logo.png' %}" alt=""></figure></a>
                 </div>
                 <div class="menu-bar">
                     <nav class="main-menu">
@@ -191,8 +178,8 @@
             <div class="tp-banner">
                 <ul>
                     
-                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/slider/1.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="images/slider/1.jpg"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="{% static 'images/slider/1.jpg' %}"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="{% static 'images/slider/1.jpg' %}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
                     
                     <div class="tp-caption sfl sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -245,8 +232,8 @@
                     
                     </li>
                     
-                    <li data-transition="zoomin" data-slotamount="1" data-masterspeed="1000" data-thumb="images/slider/2.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="images/slider/2.jpg"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                    <li data-transition="zoomin" data-slotamount="1" data-masterspeed="1000" data-thumb="{% static 'images/slider/2.jpg' %}"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="{% static 'images/slider/2.jpg' %}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
                     
                     <div class="tp-caption sfl sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -299,8 +286,8 @@
                     
                     </li>
                     
-                    <li data-transition="zoomout" data-slotamount="1" data-masterspeed="1000" data-thumb="images/slider/3.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="images/slider/3.jpg"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                    <li data-transition="zoomout" data-slotamount="1" data-masterspeed="1000" data-thumb="{% static 'images/slider/3.jpg' %}"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="{% static 'images/slider/3.jpg' %}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
                     
                     <div class="tp-caption sfl sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -414,7 +401,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 service-column">
                     <div class="single-item">
                         <div class="img-box">
-                            <a href="service-details.html"><figure><img src="images/service/1.jpg" alt=""></figure></a>
+                            <a href="service-details.html"><figure><img src="{% static 'images/service/1.jpg' %}" alt=""></figure></a>
                         </div>
                         <div class="lower-content">
                             <h4><a href="service-details.html">Carpet Flooring</a></h4>
@@ -425,7 +412,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 service-column">
                     <div class="single-item">
                         <div class="img-box">
-                            <a href="service-details.html"><figure><img src="images/service/2.jpg" alt=""></figure></a>
+                            <a href="service-details.html"><figure><img src="{% static 'images/service/2.jpg' %}" alt=""></figure></a>
                         </div>
                         <div class="lower-content">
                             <h4><a href="service-details.html">HardWood</a></h4>
@@ -436,7 +423,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 service-column">
                     <div class="single-item">
                         <div class="img-box">
-                            <a href="service-details.html"><figure><img src="images/service/3.jpg" alt=""></figure></a>
+                            <a href="service-details.html"><figure><img src="{% static 'images/service/3.jpg' %}" alt=""></figure></a>
                         </div>
                         <div class="lower-content">
                             <h4><a href="service-details.html">Laminate</a></h4>
@@ -447,7 +434,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 service-column">
                     <div class="single-item">
                         <div class="img-box">
-                            <a href="service-details.html"><figure><img src="images/service/4.jpg" alt=""></figure></a>
+                            <a href="service-details.html"><figure><img src="{% static 'images/service/4.jpg' %}" alt=""></figure></a>
                         </div>
                         <div class="lower-content">
                             <h4><a href="service-details.html">vinyle sheets</a></h4>
@@ -458,7 +445,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 service-column">
                     <div class="single-item">
                         <div class="img-box">
-                            <a href="service-details.html"><figure><img src="images/service/5.jpg" alt=""></figure></a>
+                            <a href="service-details.html"><figure><img src="{% static 'images/service/5.jpg' %}" alt=""></figure></a>
                         </div>
                         <div class="lower-content">
                             <h4><a href="service-details.html">paving work</a></h4>
@@ -469,7 +456,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 service-column">
                     <div class="single-item">
                         <div class="img-box">
-                            <a href="service-details.html"><figure><img src="images/service/6.jpg" alt=""></figure></a>
+                            <a href="service-details.html"><figure><img src="{% static 'images/service/6.jpg' %}" alt=""></figure></a>
                         </div>
                         <div class="lower-content">
                             <h4><a href="service-details.html">marble tiles</a></h4>
@@ -528,11 +515,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/1.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/1.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/1.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/1.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -546,11 +533,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/2.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/2.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/2.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/2.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -564,11 +551,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/3.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/3.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/3.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/3.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -582,11 +569,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/4.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/4.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/4.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/4.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -600,11 +587,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/5.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/5.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/5.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/5.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -624,11 +611,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/1.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/1.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/1.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/1.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -642,11 +629,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/2.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/2.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/2.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/2.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -660,11 +647,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/3.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/3.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/3.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/3.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -678,11 +665,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/4.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/4.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/4.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/4.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -696,11 +683,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/5.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/5.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/5.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/5.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -720,11 +707,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/1.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/1.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/1.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/1.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -738,11 +725,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/2.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/2.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/2.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/2.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -756,11 +743,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/3.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/3.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/3.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/3.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -774,11 +761,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/4.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/4.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/4.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/4.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -792,11 +779,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/5.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/5.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/5.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/5.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -816,11 +803,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/1.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/1.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/1.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/1.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -834,11 +821,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/2.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/2.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/2.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/2.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -852,11 +839,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/3.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/3.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/3.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/3.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -870,11 +857,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/4.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/4.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/4.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/4.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -888,11 +875,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/5.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/5.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/5.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/5.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -912,11 +899,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/1.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/1.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/1.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/1.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -930,11 +917,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/2.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/2.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/2.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/2.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -948,11 +935,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/3.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/3.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/3.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/3.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -966,11 +953,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/4.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/4.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/4.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/4.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -984,11 +971,11 @@
                         <div class="single-item filter-item">
                             <div class="single-item-overlay">
                                 <div class="img-box">
-                                    <a href="#"><img src="images/gallery/5.jpg" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/gallery/5.jpg' %}" alt=""></a>
                                     <div class="overlay">
                                         <div class="inner-box">
                                             <ul class="content">
-                                                <li><a href="images/gallery/5.jpg" class="lightbox-image"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="{% static 'images/gallery/5.jpg' %}" class="lightbox-image"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div> 
                                     </div>
@@ -1020,7 +1007,7 @@
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
                                 nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
                             </div>
-                            <div class="img-box"><figure><img src="images/home/t1.png" alt=""></figure></div>
+                            <div class="img-box"><figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure></div>
                             <div class="author-info">
                                 <h6>John Alison</h6>
                                 <ul class="rating">
@@ -1038,7 +1025,7 @@
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
                                 nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
                             </div>
-                            <div class="img-box"><figure><img src="images/home/t1.png" alt=""></figure></div>
+                            <div class="img-box"><figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure></div>
                             <div class="author-info">
                                 <h6>John Alison</h6>
                                 <ul class="rating">
@@ -1056,7 +1043,7 @@
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
                                 nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
                             </div>
-                            <div class="img-box"><figure><img src="images/home/t1.png" alt=""></figure></div>
+                            <div class="img-box"><figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure></div>
                             <div class="author-info">
                                 <h6>John Alison</h6>
                                 <ul class="rating">
@@ -1074,7 +1061,7 @@
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
                                 nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
                             </div>
-                            <div class="img-box"><figure><img src="images/home/t1.png" alt=""></figure></div>
+                            <div class="img-box"><figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure></div>
                             <div class="author-info">
                                 <h6>John Alison</h6>
                                 <ul class="rating">
@@ -1092,7 +1079,7 @@
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
                                 nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
                             </div>
-                            <div class="img-box"><figure><img src="images/home/t1.png" alt=""></figure></div>
+                            <div class="img-box"><figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure></div>
                             <div class="author-info">
                                 <h6>John Alison</h6>
                                 <ul class="rating">
@@ -1175,11 +1162,12 @@
         <div class="container">
             <div class="sec-title"><h2>Latest Products Shop</h2></div>
             <div class="row">
+                {% for product in products  %}
                 <div class="col-md-3 col-sm-6 col-xs-12 shop-column">
                     <div class="overlay-style-two">
                         <div class="item">
                             <figure class="img-box">
-                                <img src="images/shop/1.jpg" alt="">
+                                <img src="{% static 'images/shop/1.jpg' %}" alt="">
                                 <div class="default-overlay-outer">
                                     <div class="inner">
                                         <div class="content-layer">
@@ -1189,72 +1177,13 @@
                                 </div>
                             </figure>
                             <div class="lower-content center">
-                                <h4><a href="#">Floor Pattern #1</a></h4>
+                                <h4><a href="#">{{product.name}}</a></h4>
                                 <div class="text"><span>$50</span> / Sq In</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-12 shop-column">
-                    <div class="overlay-style-two">
-                        <div class="item">
-                            <figure class="img-box">
-                                <img src="images/shop/2.jpg" alt="">
-                                <div class="default-overlay-outer">
-                                    <div class="inner">
-                                        <div class="content-layer">
-                                            <a href="service-1.html" class="btn-one">Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figure>
-                            <div class="lower-content center">
-                                <h4><a href="#">Floor Pattern #1</a></h4>
-                                <div class="text"><span>$50</span> / Sq In</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12 shop-column">
-                    <div class="overlay-style-two">
-                        <div class="item">
-                            <figure class="img-box">
-                                <img src="images/shop/3.jpg" alt="">
-                                <div class="default-overlay-outer">
-                                    <div class="inner">
-                                        <div class="content-layer">
-                                            <a href="service-1.html" class="btn-one">Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figure>
-                            <div class="lower-content center">
-                                <h4><a href="#">Floor Pattern #1</a></h4>
-                                <div class="text"><span>$50</span> / Sq In</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12 shop-column">
-                    <div class="overlay-style-two">
-                        <div class="item">
-                            <figure class="img-box">
-                                <img src="images/shop/4.jpg" alt="">
-                                <div class="default-overlay-outer">
-                                    <div class="inner">
-                                        <div class="content-layer">
-                                            <a href="service-1.html" class="btn-one">Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figure>
-                            <div class="lower-content center">
-                                <h4><a href="#">Floor Pattern #1</a></h4>
-                                <div class="text"><span>$50</span> / Sq In</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="button">
                 <a href="#" class="btn-three">shop more items</a>
@@ -1337,7 +1266,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 news-column">
                     <div class="single-item">
                         <div class="img-box">
-                          <a href="blog-details.html"><figure><img src="images/news/1.jpg" alt=""></figure></a>  
+                          <a href="blog-details.html"><figure><img src="{% static 'images/news/1.jpg' %}" alt=""></figure></a>  
                           <div class="date">31 August 2017</div>
                         </div>
                         <div class="lower-content">
@@ -1355,7 +1284,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 news-column">
                     <div class="single-item">
                         <div class="img-box">
-                          <a href="blog-details.html"><figure><img src="images/news/2.jpg" alt=""></figure></a>  
+                          <a href="blog-details.html"><figure><img src="{% static 'images/news/2.jpg' %}" alt=""></figure></a>  
                           <div class="date">31 August 2017</div>
                         </div>
                         <div class="lower-content">
@@ -1373,7 +1302,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 news-column">
                     <div class="single-item">
                         <div class="img-box">
-                          <a href="blog-details.html"><figure><img src="images/news/3.jpg" alt=""></figure></a>  
+                          <a href="blog-details.html"><figure><img src="{% static 'images/news/3.jpg' %}" alt=""></figure></a>  
                           <div class="date">31 August 2017</div>
                         </div>
                         <div class="lower-content">
@@ -1418,7 +1347,7 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-6 col-xs-12 footer-column">
                         <div class="logo-widget footer-widget">
-                            <div class='footer-logo'><a href="index.html"><figure><img src="images/home/footer-logo.png" alt=""></figure></a></div>
+                            <div class='footer-logo'><a href="index.html"><figure><img src="{% static 'images/home/footer-logo.png' %}" alt=""></figure></a></div>
                             <div class="text">
                                 <p>Palatka is dolor sit amet sed consectes
                                 adipisicing elit sedau donas eiusmod aenim
@@ -1499,18 +1428,18 @@
 <!--jquery js -->
 
 
-<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/wow.js"></script> 
-<script src="js/isotope.js"></script>
-<script src="js/validation.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
-<script type="text/javascript" src="js/SmoothScroll.js"></script>
-<script src="js/revolution.min.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script> 
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/validation.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/SmoothScroll.js' %}"></script>
+<script src="{% static 'js/revolution.min.js' %}"></script>
 
-<script src="js/script.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
 
 <!-- End of .page_wrapper -->
 </body>
