@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+
+
+{% for category in categorys %}
+<section class="latest-products sec-pad centred">
+    <div class="container">
+        <div class="sec-title">
+            <h2>{{ category.title }}</h2>
+        </div>
+        <div class="row">
+            {% for product in category.products_set.all %}
+            <div class="col-md-3 col-sm-6 col-xs-12 shop-column">
+                <div class="overlay-style-two">
+                    <div class="item">
+                        <figure class="img-box">
+                            <img src="{{ product.image.url }}" alt="">
+                            <div class="default-overlay-outer">
+                                <div class="inner">
+                                    <div class="content-layer">
+                                        <a href="service-1.html" class="btn-one">Add to cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="lower-content center">
+                            <h4><a href="#">{{ product.name }}</a></h4>
+                            <div class="text"><span>${{ product.price }}</span> / Sq In</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+
+{% endblock %}
