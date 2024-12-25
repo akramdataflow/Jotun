@@ -35,50 +35,28 @@
                 <div class="flex gap-[30px] lg:gap-[20px] md:flex-col md:items-center">
                     <div class="left max-w-full grow">
                         <div>
-                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mb-[23px]">The Complete Graphic Design for Beginners</h4>
+                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mb-[23px]">{{product.name}}</h4>
 
                             <!-- course meta -->
                             <div class="border-b border-[#E5E5E5] pb-[25px] flex xs:flex-wrap items-center gap-[60px] lg:gap-[40px] xs:gap-[20px] mb-[34px]">
-                                <!-- single info -->
-                                <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
-                                    <img src="assets/img/teacher-2.jpg" alt="Course Instructor" class="w-[52px] aspect-square rounded-full object-cover">
-                                    <div>
-                                        <h6 class="font-medium text-edblue leading-[1.2]">Jane Cooper</h6>
-                                        <span class="font-medium text-[14px] text-edgray leading-[1]">Teacher</span>
-                                    </div>
-                                </div>
+                                
 
                                 <!-- single info -->
                                 <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
                                     <div>
                                         <h6 class="font-medium text-edblue leading-[1.2]">Categories</h6>
-                                        <span class="font-medium text-[14px] text-edgray leading-[1]">Online Teaching</span>
+                                        <span class="font-medium text-[14px] text-edgray leading-[1]">{{product.category}}</span>
                                     </div>
                                 </div>
 
-                                <!-- single info -->
-                                <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
-                                    <div>
-                                        <h6 class="font-medium text-edblue leading-[1.2]">Reviews</h6>
-                                        <div class="flex gap-[7px] text-[#FFA41B] text-[14px] mt-[6px]">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star-half-stroke"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                            
                             </div>
 
                             <!-- tabs container -->
                             <div>
                                 <!-- tab navs  -->
                                 <div class="ed-course-details-tab-navs border border-[#E5E5E5] rounded-[10px] p-[20px] lg:p-[15px] flex gap-[16px] *:h-[56px] sm:*:h-[46px] *:rounded-[8px] *:flex-auto *:bg-edpurple/[06%] *:px-[20px] lg:*:px-[15px] *:font-semibold overflow-auto">
-                                    <button class="tab-nav active" data-tab="overview">Overview</button>
-                                    <button class="tab-nav" data-tab="curriculum">Curriculum</button>
-                                    <button class="tab-nav" data-tab="instructor">Instructor</button>
-                                    <button class="tab-nav" data-tab="reviews">Reviews</button>
+                                    <button class="tab-nav active" data-tab="overview">Add to Card</button>
                                 </div>
 
                                 <!-- tabs -->
@@ -86,19 +64,13 @@
                                     <!-- tab 01 -->
                                     <div id="overview" class="ed-tab duration-[400ms] active">
                                         <div>
-                                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mt-[28px] mb-[15px]">Course Descriptions</h4>
+                                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mt-[28px] mb-[15px]">وصف المنتج</h4>
                                             <div class="space-y-[10px]">
-                                                <p class="text-edgray">Consectetur adipisicing elit, sed do eiusmod tempor is incididunt ut labore et dolore of magna aliqua. Ut enim ad minim veniam, made of owl the quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea dolor commodo consequat. Duis aute irure and dolor in reprehenderit.</p>
-                                                <p class="text-edgray">The is ipsum dolor sit amet consectetur adipiscing elit. Fusce eleifend porta arcu In hac augu ehabitasse the is platea augue thelorem turpoi dictumst. In lacus libero faucibus at malesuada sagittis placerat eros sed istincidunt augue ac ante rutrum sed the is sodales augue consequat.</p>
+                                                <p class="text-edgray">{{ product.description|safe }}</p>
                                             </div>
                                         </div>
 
-                                        <div>
-                                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mt-[28px] mb-[15px]">Requirements for The Course</h4>
-                                            <div class="space-y-[10px]">
-                                                <p class="text-edgray">Nulla facilisi. Vestibulum tristique sem in eros eleifend imperdiet. Donec quis convallis neque. In id lacus pulvinar lacus, eget vulputate lectus. Ut viverra bibendum lorem, at tempus nibh mattis in. Sed a massa eget lacus consequat auctor.</p>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
 
                                     <!-- tab 02 -->
@@ -367,111 +339,12 @@
                                 </div>
                             </div>
 
-                            <!-- Review Form BLOCK -->
-                            <div class="mt-[50px]">
-                                <h5 class="font-semibold text-[22px] text-edblue mb-[17px]">Write a Review</h5>
-                                <div class="flex gap-[7px] text-[14px] text-[#FFA319] mb-[14px]">
-                                    <button><i class="fa-regular fa-star"></i></button>
-                                    <button><i class="fa-regular fa-star"></i></button>
-                                    <button><i class="fa-regular fa-star"></i></button>
-                                    <button><i class="fa-regular fa-star"></i></button>
-                                    <button><i class="fa-regular fa-star"></i></button>
-                                </div>
-
-                                <form action="#" class="grid grid-cols-2 xxs:grid-cols-1 gap-[30px] xs:gap-[20px] text-[16px]">
-                                    <div>
-                                        <label for="ed-course-review-name" class="font-lato font-semibold text-edblue block mb-[12px]">Your Name*</label>
-                                        <input type="text" name="name" id="ed-course-review-name" placeholder="Your Name" class="border border-[#ECECEC] h-[55px] px-[20px] xs:px-[15px] rounded-[4px] w-full focus:outline-none">
-                                    </div>
-                                    <div>
-                                        <label for="ed-course-review-email" class="font-lato font-semibold text-edblue block mb-[12px]">Your Email*</label>
-                                        <input type="email" name="email" id="ed-course-review-email" placeholder="Your Email" class="border border-[#ECECEC] h-[55px] px-[20px] xs:px-[15px] rounded-[4px] w-full focus:outline-none">
-                                    </div>
-                                    <div class="col-span-2 xxs:col-span-1">
-                                        <label for="ed-course-review-message" class="font-lato font-semibold text-edblue block mb-[12px]">Your Message*</label>
-                                        <textarea name="message" id="ed-course-review-message" placeholder="Your Message" class="border border-[#ECECEC] h-[145px] p-[20px] rounded-[4px] w-full focus:outline-none"></textarea>
-                                    </div>
-                                    <div>
-                                        <button type="submit" class="bg-edpurple h-[55px] px-[24px] rounded-[10px] text-[16px] font-medium text-white hover:bg-edblue">Post Review <span class="icon pl-[10px]"><i class="fa-solid fa-arrow-right-long"></i></span></button>
-                                    </div>
-                                </form>
-                            </div>
+                           
+                            
                         </div>
                     </div>
 
-                    <!-- right sidebar -->
-                    <div class="right h-full sticky top-[120px] max-w-full w-[370px] lg:w-[300px] shrink-0 space-y-[30px]">
-                        <!-- COURSE INFORMATION -->
-                        <div class="border border-[#e5e5e5] rounded-[10px] px-[30px] lg:px-[20px] xxs:px-[15px] py-[35px] lg:py-[25px] xxs:py-[25px]">
-                            <h5 class="font-semibold text-[24px] text-edblue mb-[20px]">Course includes:</h5>
-
-                            <ul class="mb-[30px]">
-                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
-                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
-                                        <span class="icon"><img src="assets/img/icon/calender-purple.svg" alt="icon"></span>
-                                        <span>Level:</span>
-                                    </span>
-                                    <span class="text-[15px] text-edgray">Beginner</span>
-                                </li>
-
-                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
-                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
-                                        <span class="icon"><img src="assets/img/icon/clock-purple.svg" alt="icon"></span>
-                                        <span>Duration:</span>
-                                    </span>
-                                    <span class="text-[15px] text-edgray">6 Months</span>
-                                </li>
-
-                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
-                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
-                                        <span class="icon"><img src="assets/img/icon/lesson-purple.svg" alt="icon"></span>
-                                        <span>Lessons:</span>
-                                    </span>
-                                    <span class="text-[15px] text-edgray">12</span>
-                                </li>
-
-                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
-                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
-                                        <span class="icon"><img src="assets/img/icon/user-group-purple.svg" alt="icon"></span>
-                                        <span>Students:</span>
-                                    </span>
-                                    <span class="text-[15px] text-edgray">120</span>
-                                </li>
-
-                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
-                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
-                                        <span class="icon"><img src="assets/img/icon/medal.svg" alt="icon"></span>
-                                        <span>Certifications:</span>
-                                    </span>
-                                    <span class="text-[15px] text-edgray">Yes</span>
-                                </li>
-
-                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
-                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
-                                        <span class="icon"><img src="assets/img/icon/globe.svg" alt="icon"></span>
-                                        <span>Language:</span>
-                                    </span>
-                                    <span class="text-[15px] text-edgray">English</span>
-                                </li>
-                            </ul>
-
-                            <div class="space-y-[12px]">
-                                <button class="ed-btn !h-[56px] !rounded-[8px] w-full !bg-transparent border border-edpurple !text-edpurple hover:!bg-edpurple hover:!text-white">Add to cart</button>
-                                <a href="#" class="ed-btn gap-[10px] !h-[56px] !rounded-[8px] w-full">Join this Course <span><i class="fa-solid fa-arrow-right-long"></i></span></a>
-                            </div>
-
-                            <!-- social links -->
-                            <div class="flex gap-[28px] items-center justify-center mt-[22px]">
-                                <h6 class="font-semibold text-[16px] text-black">Share:</h6>
-                                <div class="flex gap-[15px] text-[16px]">
-                                    <a href="#" class="text-[#757277] hover:text-edpurple"><i class="fa-brands fa-facebook-f"></i></a>
-                                    <a href="#" class="text-[#757277] hover:text-edpurple"><i class="fa-brands fa-twitter"></i></a>
-                                    <a href="#" class="text-[#757277] hover:text-edpurple"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#" class="text-[#757277] hover:text-edpurple"><i class="fa-brands fa-youtube"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Products, Category
+from .models import *
 import stripe
 from django.conf import settings
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -21,6 +23,45 @@ def details(request,name):
     product = get_object_or_404(Products, name=name)
     context = {'product':product}
     return render(request,'details.html', context)
+
+
+
+def card(request):
+
+    # جلب جميع التصنيفات
+    categorys = Category.objects.all()
+
+    # جلب أو إنشاء عربة التسوق للمستخدم
+    cart, created = Cart.objects.get_or_create(user=request.user)
+
+    # جلب العناصر المرتبطة بالعربة
+    cart_items = cart.items.all()
+    total_price = sum(item.get_total_price() for item in cart_items)
+
+    context = {
+        'categorys': categorys,
+        'cart': cart,
+        'cart_items': cart_items,
+        'total_price': total_price,
+    }
+    return render(request, 'card.html', context)
+
+
+@login_required
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Products, id=product_id)
+    cart, created = Cart.objects.get_or_create(user=request.user)
+
+    # تحقق إذا كان المنتج موجودًا في السلة
+    cart_item, item_created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if not item_created:
+        # زيادة الكمية إذا كان المنتج موجودًا مسبقًا
+        cart_item.quantity += 1
+        cart_item.save()
+
+    return redirect('card')  # توجيه المستخدم إلى صفحة السلة
+
+
 
 
 

@@ -19,7 +19,11 @@
                             <div class="default-overlay-outer">
                                 <div class="inner">
                                     <div class="content-layer">
-                                        <a href="service-1.html" class="btn-one">Add to cart</a>
+                                        {% if user.is_authenticated %}
+                                            <a href="{% url 'add_to_cart' product.id %}" class="btn-one">Add to cart</a>
+                                        {% else %}
+                                            <a href="{% url 'login' %}" class="btn-one">Login to add to cart</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

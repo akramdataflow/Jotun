@@ -85,19 +85,9 @@
                         </div>
                     </nav>
                     <div class="info-box">
-                        <div class="search-box-area">
-                            <div class="search-toggle"><i class="fa fa-search"></i></div>
-                            <div class="search-box">
-                                <form method="post" action="index.html">
-                                    <div class="form-group">
-                                        <input type="search" name="search" placeholder="Search Here" required>
-                                        <button type="submit"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                        
                         <div class="cart-box">
-                            <div class="icon-box"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                            <div class="icon-box"><a href="{% url 'card' %}"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
                             </div>
                             <div class="number">3</div>
                         </div>
@@ -187,7 +177,7 @@
 	{% endblock %}    
 
 
-
+<!--
     <footer class="main-footer">
         <div class="footer-top">
             <div class="container">
@@ -268,6 +258,7 @@
             </div>
         </div>
     </footer>
+    -->
     <!-- main footer area end -->
 
 

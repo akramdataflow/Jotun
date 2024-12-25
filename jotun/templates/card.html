@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+
+<div class="cart-container">
+    <h2>Cart for {{ cart.user.username }}</h2>
+    <ul>
+        {% for item in cart_items %}
+        <li>
+            <strong>{{ item.product.name }}</strong> - 
+            Quantity: {{ item.quantity }} - 
+            Price: ${{ item.product.price }} - 
+            Total: ${{ item.get_total_price }}
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h3>Total Price: ${{ total_price }}</h3>
+</div>
+
+{% endblock %}
