@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>الدفع</title>
+</head>
+<body>
+    <h1>الدفع 50 دولار</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">ادفع الآن</button>
+    </form>
+</body>
+</html>

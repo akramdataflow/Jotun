@@ -13,14 +13,14 @@
                     <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
                         data-thumb="{% static 'images/slider/1.jpg' %}" data-saveperformance="off"
                         data-title="Awesome Title Here">
-                        <img src="{% static 'images/slider/DSC07959.png' %}" alt="" data-bgposition="center top"
+                        <img src="{% static 'images/slider/جوتن.jpg' %}" alt="" data-bgposition="center top"
                             data-bgfit="cover" data-bgrepeat="no-repeat">
 
                         <div class="tp-caption sfl sfb tp-resizeme" data-x="center" data-hoffset="0" data-y="center"
                             data-voffset="-80" data-speed="1500" data-start="500" data-easing="easeOutExpo"
                             data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3"
                             data-endspeed="1200" data-endeasing="Power4.easeIn">
-                            <h1>Creativity On Your Floor Designs</h1>
+                            <h1>Creativity in dyes</h1>
                         </div>
 
                         <div class="tp-caption sfl sfb tp-resizeme" data-x="center" data-hoffset="0" data-y="center"
@@ -46,7 +46,7 @@
                     <li data-transition="zoomin" data-slotamount="1" data-masterspeed="1000"
                         data-thumb="{% static 'images/slider/2.jpg' %}" data-saveperformance="off"
                         data-title="Awesome Title Here">
-                        <img src="{% static 'images/slider/2.jpg' %}" alt="" data-bgposition="center top"
+                        <img src="{% static 'images/slider/2.jpeg' %}" alt="" data-bgposition="center top"
                             data-bgfit="cover" data-bgrepeat="no-repeat">
 
                         <div class="tp-caption sfl sfb tp-resizeme" data-x="center" data-hoffset="0" data-y="center"
@@ -79,7 +79,7 @@
                     <li data-transition="zoomout" data-slotamount="1" data-masterspeed="1000"
                         data-thumb="{% static 'images/slider/3.jpg' %}" data-saveperformance="off"
                         data-title="Awesome Title Here">
-                        <img src="{% static 'images/slider/3.jpg' %}" alt="" data-bgposition="center top"
+                        <img src="{% static 'images/slider/3.jpeg' %}" alt="" data-bgposition="center top"
                             data-bgfit="cover" data-bgrepeat="no-repeat">
 
                         <div class="tp-caption sfl sfb tp-resizeme" data-x="center" data-hoffset="0" data-y="center"
@@ -116,39 +116,7 @@
     </section>
     <!-- main slider end -->
 
-    
-    <section class="latest-products sec-pad centred">
-        <div class="container">
-            <div class="sec-title"><h2>{{category.title}}</h2></div>
-            <div class="row">
-                {% for product in products  %}
-                <div class="col-md-3 col-sm-6 col-xs-12 shop-column">
-                    <div class="overlay-style-two">
-                        <div class="item">
-                            <figure class="img-box">
-                                <img src="{{ product.image.url }}" alt="">
-                                <div class="default-overlay-outer">
-                                    <div class="inner">
-                                        <div class="content-layer">
-                                            <a href="{% url 'details' product.id%}" class="btn-one">Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figure>
-                            <div class="lower-content center">
-                                <h4><a href="#">{{product.name}}</a></h4>
-                                <div class="text"><span>${{product.price}}</span> / Sq In</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="button">
-                <a href="{% url 'products' %}" class="btn-three">shop more items</a>
-            </div>
-        </div>
-    </section>
+
 
 
     <!-- top-info -->
@@ -193,134 +161,45 @@
     </section>
     <!-- top info end -->
 
-
-    <!-- service section -->
-    <section class="service-section sec-pad centred">
+    
+    <section class="latest-products sec-pad centred">
         <div class="container">
-            <div class="service-title">
-                <div class="sec-title">
-                    <h2>Browse Our Services</h2>
-                </div>
-            </div>
+            <div class="sec-title"><h2>{{category.title}}</h2></div>
             <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12 service-column">
-                    <div class="single-item">
-                        <div class="img-box">
-                            <a href="service-details.html">
-                                <figure><img src="{% static 'images/service/1.jpg' %}" alt=""></figure>
-                            </a>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="service-details.html">Carpet Flooring</a></h4>
-                            <div class="text">
-                                <p>Dolor sit amet consectetur elit</p>
+                {% for product in products  %}
+                <div class="col-md-3 col-sm-6 col-xs-12 shop-column">
+                    <div class="overlay-style-two">
+                        <div class="item">
+                            <figure class="img-box">
+                                <img src="{{ product.image.url }}" alt="">
+                                <div class="default-overlay-outer">
+                                    <div class="inner">
+                                        <div class="content-layer">
+                                            <a href="#" class="btn-one">Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </figure>
+                            <div class="lower-content center">
+                                <h4><a href="{% url 'details' product.name %}">{{product.name}}</a></h4>
+                                <div class="text"><span>${{product.price}}</span> / Sq In</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 service-column">
-                    <div class="single-item">
-                        <div class="img-box">
-                            <a href="service-details.html">
-                                <figure><img src="{% static 'images/service/2.jpg' %}" alt=""></figure>
-                            </a>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="service-details.html">HardWood</a></h4>
-                            <div class="text">
-                                <p>Dolor sit amet consectetur elit</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 service-column">
-                    <div class="single-item">
-                        <div class="img-box">
-                            <a href="service-details.html">
-                                <figure><img src="{% static 'images/service/3.jpg' %}" alt=""></figure>
-                            </a>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="service-details.html">Laminate</a></h4>
-                            <div class="text">
-                                <p>Dolor sit amet consectetur elit</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 service-column">
-                    <div class="single-item">
-                        <div class="img-box">
-                            <a href="service-details.html">
-                                <figure><img src="{% static 'images/service/4.jpg' %}" alt=""></figure>
-                            </a>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="service-details.html">vinyle sheets</a></h4>
-                            <div class="text">
-                                <p>Dolor sit amet consectetur elit</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 service-column">
-                    <div class="single-item">
-                        <div class="img-box">
-                            <a href="service-details.html">
-                                <figure><img src="{% static 'images/service/5.jpg' %}" alt=""></figure>
-                            </a>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="service-details.html">paving work</a></h4>
-                            <div class="text">
-                                <p>Dolor sit amet consectetur elit</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 service-column">
-                    <div class="single-item">
-                        <div class="img-box">
-                            <a href="service-details.html">
-                                <figure><img src="{% static 'images/service/6.jpg' %}" alt=""></figure>
-                            </a>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="service-details.html">marble tiles</a></h4>
-                            <div class="text">
-                                <p>Dolor sit amet consectetur elit</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="button">
-                <a href="service.html" class="btn-three">more services</a>
+                <a href="{% url 'products' %}" class="btn-three">shop more items</a>
             </div>
         </div>
     </section>
-    <!-- service section end -->
 
 
-    <!-- call-to-action -->
-    <section class="call-to-action">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12 column">
-                    <div class="left-content">
-                        <div class="text">Need any of our Service? <span>Call Us Now Or Send A Message</span></div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 column">
-                    <div class="right-content">
-                        <div class="text">For Free Estimate, Dial <span>(320) 987-6543</span> Or</div>
-                        <div class="button"><a href="#" class="btn-three">send message</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- call-to-action -->
+
+
+
+
 
 
     <!--Project Section-->
@@ -852,290 +731,15 @@
     <!--End Project Section-->
 
 
-    <!-- testimonials section -->
-    <section class="testimonials-section sec-pad centred">
-        <div class="container">
-            <div class="sec-title">
-                <h2>Clients Feedback</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-sm-12 col-xs-12 col-md-offset-1 column">
-                    <div class="testimonials-slider">
-                        <div class="testimonials-content">
-                            <div class="text">
-                                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
-                                    nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
-                            </div>
-                            <div class="img-box">
-                                <figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure>
-                            </div>
-                            <div class="author-info">
-                                <h6>John Alison</h6>
-                                <ul class="rating">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="testimonials-content">
-                            <div class="text">
-                                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
-                                    nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
-                            </div>
-                            <div class="img-box">
-                                <figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure>
-                            </div>
-                            <div class="author-info">
-                                <h6>John Alison</h6>
-                                <ul class="rating">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="testimonials-content">
-                            <div class="text">
-                                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
-                                    nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
-                            </div>
-                            <div class="img-box">
-                                <figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure>
-                            </div>
-                            <div class="author-info">
-                                <h6>John Alison</h6>
-                                <ul class="rating">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="testimonials-content">
-                            <div class="text">
-                                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
-                                    nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
-                            </div>
-                            <div class="img-box">
-                                <figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure>
-                            </div>
-                            <div class="author-info">
-                                <h6>John Alison</h6>
-                                <ul class="rating">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="testimonials-content">
-                            <div class="text">
-                                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis
-                                    nostrud exercitation ullamco laboris nisi ut alisuid.</h3>
-                            </div>
-                            <div class="img-box">
-                                <figure><img src="{% static 'images/home/t1.png' %}" alt=""></figure>
-                            </div>
-                            <div class="author-info">
-                                <h6>John Alison</h6>
-                                <ul class="rating">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- testimonials section end -->
 
 
-    <!-- choose us section -->
-
-    <!-- choose us section end -->
 
 
-    <!-- latest-products section -->
-    
-
-    <!-- latest-products section end -->
 
 
-    <!-- pricing-section -->
-    <section class="pricing-section sec-pad centred">
-        <div class="container">
-            <div class="sec-title">
-                <h2>Pricing Structure</h2>
-            </div>
-            <div class="pricing-area">
-                <div class="pricing-table">
-                    <div class="table-top">
-                        <h5>BASIC pack</h5>
-                        <div class="price">$50</div>
-                        <div class="text">Per Installation</div>
-                    </div>
-                    <div class="table-bottom">
-                        <ul class="list">
-                            <li><span>FREE</span> Installation</li>
-                            <li>All Unique Designs Library</li>
-                            <li>Flooring & Paving</li>
-                            <li>Complete Site Washing</li>
-                        </ul>
-                        <div class="button">
-                            <a href="#" class="btn-three">choose plan</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pricing-table active">
-                    <div class="table-top">
-                        <h5>standard pack</h5>
-                        <div class="price">$70</div>
-                        <div class="text">Per Installation</div>
-                    </div>
-                    <div class="table-bottom">
-                        <ul class="list">
-                            <li><span>FREE</span> Installation</li>
-                            <li>All Unique Designs Library</li>
-                            <li>Flooring & Paving</li>
-                            <li>Complete Site Washing</li>
-                        </ul>
-                        <div class="button">
-                            <a href="#" class="btn-three">choose plan</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pricing-table">
-                    <div class="table-top">
-                        <h5>premium pack</h5>
-                        <div class="price">$90</div>
-                        <div class="text">Per Installation</div>
-                    </div>
-                    <div class="table-bottom">
-                        <ul class="list">
-                            <li><span>FREE</span> Installation</li>
-                            <li>All Unique Designs Library</li>
-                            <li>Flooring & Paving</li>
-                            <li>Complete Site Washing</li>
-                        </ul>
-                        <div class="button">
-                            <a href="#" class="btn-three">choose plan</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- pricing-section end -->
 
 
-    <!-- news-section -->
-    <section class="news-section sec-pad">
-        <div class="container">
-            <div class="sec-title centred">
-                <h2>From The Blog</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12 news-column">
-                    <div class="single-item">
-                        <div class="img-box">
-                            <a href="blog-details.html">
-                                <figure><img src="{% static 'images/news/1.jpg' %}" alt=""></figure>
-                            </a>
-                            <div class="date">31 August 2017</div>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="blog-details.html">We Know Your Project Well</a></h4>
-                            <div class="meta">Posted by John Shaw</div>
-                            <div class="text">
-                                <p>Dolor sit amet consectetur elit Lorem ipsum dolor
-                                    sit amet, consectetur adipisicing elit sed eiusmod
-                                    tempor incididunt ut labore et dolore.</p>
-                            </div>
-                            <div class="button"><a href="blog-details.html">read more</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 news-column">
-                    <div class="single-item">
-                        <div class="img-box">
-                            <a href="blog-details.html">
-                                <figure><img src="{% static 'images/news/2.jpg' %}" alt=""></figure>
-                            </a>
-                            <div class="date">31 August 2017</div>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="blog-details.html">We Know Your Project Well</a></h4>
-                            <div class="meta">Posted by John Shaw</div>
-                            <div class="text">
-                                <p>Dolor sit amet consectetur elit Lorem ipsum dolor
-                                    sit amet, consectetur adipisicing elit sed eiusmod
-                                    tempor incididunt ut labore et dolore.</p>
-                            </div>
-                            <div class="button"><a href="blog-details.html">read more</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 news-column">
-                    <div class="single-item">
-                        <div class="img-box">
-                            <a href="blog-details.html">
-                                <figure><img src="{% static 'images/news/3.jpg' %}" alt=""></figure>
-                            </a>
-                            <div class="date">31 August 2017</div>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="blog-details.html">We Know Your Project Well</a></h4>
-                            <div class="meta">Posted by John Shaw</div>
-                            <div class="text">
-                                <p>Dolor sit amet consectetur elit Lorem ipsum dolor
-                                    sit amet, consectetur adipisicing elit sed eiusmod
-                                    tempor incididunt ut labore et dolore.</p>
-                            </div>
-                            <div class="button"><a href="blog-details.html">read more</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- news section end -->
 
-
-    <!-- call-out -->
-    <section class="call-out sec-pad centred">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-sm-12 col-xs-12 column">
-                    <div class="call-out-content">
-                        <div class="title-text">Get Your All Kinds Of Flooring & Paving
-                            Work Done By Us!</div>
-                        <div class="text">For Free Estimate, Dial <span>(320) 987-6543</span> Or Email
-                            <span>sale@Palatka.com</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- call-out section end -->
 
 
     <!-- main footer area -->
