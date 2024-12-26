@@ -147,7 +147,6 @@
                     </nav>
                     <div class="info-box">
                         <div class="search-box-area">
-                            <div class="search-toggle"><i class="fa fa-search"></i></div>
                             <div class="search-box">
                                 <form method="post" action="index.html">
                                     <div class="form-group">
@@ -158,9 +157,9 @@
                             </div>
                         </div>
                         <div class="cart-box">
-                            <div class="icon-box"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                            <div class="icon-box"><a href="{% url 'card' %}"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
                             </div>
-                            <div class="number">3</div>
+                            <!-- <div class="number">3</div> -->
                         </div>
                     </div>
                 </div>
@@ -169,7 +168,7 @@
         <!-- end sticky header -->
 
     </header>
-    <!-- end main header area -->
+    
 
 
 	{% block body %}
