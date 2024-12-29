@@ -81,18 +81,21 @@
                                <td class="product-name"><a href="product-details.html">{{ item.product.name }}</a></td>
                                <td class="product-price"><span class="amount">${{ item.product.price }}</span></td>
                                <td class="product-quantity text-center">
-                                  <div class="product-quantity mt-10 mb-10">
-                                     <div class="product-quantity-form">
-                                        <form action="#">
-                                           <button class="cart-minus"><i class="far fa-minus"></i></button>
-                                           <input class="cart-input" type="text" value="{{ item.quantity }}">
-                                           <button class="cart-plus"><i class="far fa-plus"></i></button>
-                                        </form>
-                                     </div>
-                                  </div>
-                               </td>
+                                 <div class="product-quantity mt-10 mb-10">
+                                     <a href="{% url 'increase_quantity' item.product.id %}" class="btn btn-sm btn-success">+</a>
+                                     <span>{{ item.quantity }}</span>
+                                     <a href="{% url 'decrease_quantity' item.product.id %}" class="btn btn-sm btn-danger">-</a>
+                                 </div>
+                             </td>
                                <td class="product-subtotal"><span class="amount">${{ item.get_total_price }}</span></td>
-                               <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                               <td class="product-remove">
+                                 <form method="POST" action="{% url 'remove_from_cart' item.product.id %}">
+                                     {% csrf_token %}
+                                     <button type="submit" style="border: none; background: none;">
+                                         <i class="fa fa-times" style="color: red; cursor: pointer;"></i>
+                                     </button>
+                                 </form>
+                             </td>
                             </tr>
                             {% endfor %}
 
@@ -106,16 +109,15 @@
                             <ul class="mb-20">
                                <li>المجموع <span>${{ total_price }}</span></li>
                             </ul>
-                            <a class="fill-btn" href="{% url 'payment_page' %}">
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <button type="submit">ادفع الآن</button>
-                                </form>
-                               <span class="fill-btn-inner">
-                                  <span class="fill-btn-normal">الدفع</span>
-                                  <span class="fill-btn-hover">الدفع</span>
-                               </span>
-                            </a>
+                            <form method="POST" action="{% url 'payment_page' %}">
+                              {% csrf_token %}
+                              <button type="submit" class="fill-btn">
+                                  <span class="fill-btn-inner">
+                                      <span class="fill-btn-normal">الدفع</span>
+                                      <span class="fill-btn-hover">ادفع</span>
+                                  </span>
+                              </button>
+                          </form>
                          </div>
                       </div>
                    </div>

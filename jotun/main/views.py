@@ -59,15 +59,65 @@ def add_to_cart(request, product_id):
         cart_item.quantity += 1
         cart_item.save()
 
+    # إعادة المستخدم إلى الصفحة السابقة
+    previous_url = request.META.get('HTTP_REFERER', 'home')
+    return redirect(previous_url)
+
+@login_required
+def increase_quantity(request, product_id):
+    product = get_object_or_404(Products, id=product_id)
+    cart = get_object_or_404(Cart, user=request.user)
+    cart_item = get_object_or_404(CartItem, cart=cart, product=product)
+
+    # زيادة العدد بمقدار 1
+    cart_item.quantity += 1
+    cart_item.save()
+
     return redirect('card')  # توجيه المستخدم إلى صفحة السلة
 
+@login_required
+def decrease_quantity(request, product_id):
+    product = get_object_or_404(Products, id=product_id)
+    cart = get_object_or_404(Cart, user=request.user)
+    cart_item = get_object_or_404(CartItem, cart=cart, product=product)
+
+    if cart_item.quantity > 1:
+        # تقليل العدد بمقدار 1
+        cart_item.quantity -= 1
+        cart_item.save()
+    else:
+        # إذا كان العدد 1، احذف العنصر من السلة
+        cart_item.delete()
+
+    return redirect('card')  # توجيه المستخدم إلى صفحة السلة
+
+@login_required
+def remove_from_cart(request, product_id):
+    cart = Cart.objects.filter(user=request.user).first()
+    
+    if cart:
+        # حاول الحصول على العنصر من السلة
+        cart_item = CartItem.objects.filter(cart=cart, product_id=product_id).first()
+        if cart_item:
+            cart_item.delete()  # حذف العنصر
+
+    # إعادة المستخدم إلى الصفحة السابقة
+    previous_url = request.META.get('HTTP_REFERER', 'home')
+    return redirect(previous_url)
 
 
 
 
-# عرض صفحة الدفع
+@login_required
 def payment_page(request):
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    cart_items = cart.items.all()
+    total_price = sum(item.get_total_price() for item in cart_items)
+
     if request.method == "POST":
+        # تحويل المبلغ إلى سنتات
+        total_price_cents = int(total_price * 100)
+
         # إنشاء جلسة دفع
         session = stripe.checkout.Session.create(
             payment_method_types=["card"],  # دعم الدفع بالبطاقات
@@ -75,9 +125,9 @@ def payment_page(request):
                 "price_data": {
                     "currency": "usd",  # العملة
                     "product_data": {
-                        "name": "Your Product Name",  # اسم المنتج
+                        "name": "Cart Payment",  # اسم المنتج
                     },
-                    "unit_amount": 5000,  # السعر بالسنتات (50 دولار = 5000 سنت)
+                    "unit_amount": total_price_cents,  # المجموع بالسنتات
                 },
                 "quantity": 1,  # الكمية
             }],
@@ -86,11 +136,37 @@ def payment_page(request):
             cancel_url="http://127.0.0.1:8000/cancel/",    # رابط الإلغاء
         )
         return redirect(session.url)  # إعادة التوجيه إلى صفحة الدفع الجاهزة
-    return render(request, "payment.html")
 
+    return render(request, 'payment_page.html', {'cart_items': cart_items, 'total_price': total_price})
 
+@login_required
 def success(request):
-    return render(request, 'success.html')
+    cart = Cart.objects.get(user=request.user)
+    cart_items = cart.items.all()
+    total_price = sum(item.get_total_price() for item in cart_items)
 
+    # حفظ تفاصيل الطلب
+    order = Order.objects.create(
+        user=request.user,
+        total_price=total_price
+    )
+    
+    for item in cart_items:
+        OrderItem.objects.create(
+            order=order,
+            product=item.product,
+            quantity=item.quantity,
+            price=item.get_total_price()
+        )
+    
+    # تنظيف السلة
+    cart.items.all().delete()
+
+    return render(request, 'index.html', {'order': order})
+
+@login_required
 def cancel(request):
     return render(request, 'cancel.html')
+
+
+
