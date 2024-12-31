@@ -5,6 +5,14 @@ from colorfield.fields import ColorField
 
 # Create your models here.
 
+class Color(models.Model):
+    name = models.CharField(max_length=100)  # Color name (e.g., "Red")
+    number = models.DecimalField(max_digits=10, decimal_places=2)  # Color number, can be used for a color code
+    hex_value = models.CharField(max_length=10)  # Hex value of the color (e.g., "#FF0000" for red)
+
+    def __str__(self):
+        return f"{self.name} - {self.number} - {self.hex_value}"
+
 def image_upload(instance, filename):
     imagename, extension = filename.split('.')
     return "product/%s.%s" % (instance.id, extension)
@@ -62,3 +70,4 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} for {self.order.user.username}"
+    

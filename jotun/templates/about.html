@@ -1,0 +1,82 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+     <!-- page title -->
+    <section class="page-title">
+        <div class="container">
+            <div class="content-box">
+                <div class="title"><h1>About Us</h1></div>
+                <div class="bread-crumb">
+                    <a href="{% url 'home' %}">Home &nbsp;<i class="fa fa-angle-right"></i></a> &nbsp;<span>About us</span> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+
+    <!-- info text -->
+    <section class="info-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-12 col-xs-12 column">
+                    <div class="title-text">Experience spanning more than 100 years</div>
+                </div>
+                <div class="col-md-7 col-sm-12 col-xs-12 column">
+                    <div class="content-right">
+                        <div class="title-right">We give your Home & Office floor the perfect look
+                        you always want & make it Brand New!</div>
+                        <div class="text">
+                            <p>Dolor sit amet consectetur elit sed eiusmod tempor incididunt aliqu utas enim nim veniam tempor quis sed
+                            ipsum nostrud. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntu
+                            labore et dolore magna aliqua uet enim ad minim veniam quis nostrud.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- info text end -->
+
+
+    <!-- our history -->
+    <section class="our-history">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12 history-column">
+                    <div class="history-content">
+                        <div class="product-details-tab-title">
+                            <div class="tab-title">
+                                <ul>
+                                    <li data-tab-name="details" class="active"><span>شركة جوتن</span></li>
+                                    <li data-tab-name="review"><span>وكيل جوتن شارع فلسطين</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-details-tab-content">
+                            <div class="tab-content" id="details">
+                                <div class="text">
+                                    <p>هي شركة رائدة عالميًا في تصنيع وتطوير الدهانات والطلاءات، تأسست في النرويج عام 1926 وتوسعت لتعمل في أكثر من 100 دولة. تقدم جوتن مجموعة متنوعة من المنتجات تشمل الدهانات الزخرفية للمنازل والمباني، الطلاءات الصناعية لحماية المنشآت الكبيرة، طلاءات السفن المقاومة للتآكل، والدهانات الواقية المخصصة للظروف البيئية القاسية. تتميز الشركة بجودة منتجاتها وابتكاراتها في تطوير دهانات صديقة للبيئة ومستدامة، مع التركيز على تلبية احتياجات العملاء بمعايير عالية من الأداء. تُعد جوتن علامة تجارية مميزة في الأسواق العربية، بما فيها العراق، حيث تقدم حلولًا تناسب الظروف المحلية وتضمن ألوانًا تدوم طويلًا.</p>
+                                </div>
+                            </div>
+                            <div class="tab-content" id="review">
+                                <div class="text">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo tempor lab
+                                    dolore magnad aliquat enim adum minim veniam quis nostrud exercitas tion lamco 
+                                    nisi ut aliquip ex ea commod consequat uis aute irue dolorin reprehenderitin volupa
+                                    velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore dolore mag
+                                    aliqua enim ad minim veniam, quis nostrud exercitation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- our history end -->
+
+
+
+{% endblock %}
