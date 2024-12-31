@@ -8,127 +8,40 @@
     <div class="container">
         <div class="content-box">
             <div class="title">
-                <h1>Our Projects</h1>
+                <h1>الألوان</h1>
             </div>
             <div class="bread-crumb">
-                <a href="index.html">Home &nbsp;<i class="fa fa-angle-right"></i></a> &nbsp;<span>Projects</span>
+                <a href="{% url 'home' %}">Home &nbsp;<i class="fa fa-angle-right"></i></a> &nbsp;<span>الألوان</span>
             </div>
         </div>
     </div>
 </section>
 <!--End Page Title-->
 
-
 <!-- project section -->
 <section class="project-page">
     <div class="container">
         <div class="row masonary-layout filter-layout">
+            {% for color in colores %}
             <div class="col-md-4 col-sm-6 col-xs-12 filter-item">
                 <div class="single-item filter-item">
                     <div class="single-item-overlay">
-                        <div class="img-box">
+                        <div class="img-box" style="background-color: {{ color.hex_value }};">
                             <a href="#"><img src="images/service/1.jpg" alt=""></a>
                             <div class="overlay">
-                                <div class="inner-box">
-                                    <ul class="content">
-                                        <li><a href="images/service/1.jpg" class="lightbox-image"><i
-                                                    class="fa fa-search"></i></a></li>
-                                    </ul>
-                                </div>
+                                <h3>{{color.number}}</h3>
                             </div>
+                            <h3>{{color.name}}</h3>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 filter-item Consulting">
-                <div class="single-item filter-item">
-                    <div class="single-item-overlay">
-                        <div class="img-box">
-                            <a href="#"><img src="images/service/2.jpg" alt=""></a>
-                            <div class="overlay">
-                                <div class="inner-box">
-                                    <ul class="content">
-                                        <li><a href="images/service/2.jpg" class="lightbox-image"><i
-                                                    class="fa fa-search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 filter-item Finance Growth">
-                <div class="single-item filter-item">
-                    <div class="single-item-overlay">
-                        <div class="img-box">
-                            <a href="#"><img src="images/service/3.jpg" alt=""></a>
-                            <div class="overlay">
-                                <div class="inner-box">
-                                    <ul class="content">
-                                        <li><a href="images/service/3.jpg" class="lightbox-image"><i
-                                                    class="fa fa-search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 filter-item Marketing Finance">
-                <div class="single-item filter-item">
-                    <div class="single-item-overlay">
-                        <div class="img-box">
-                            <a href="#"><img src="images/service/4.jpg" alt=""></a>
-                            <div class="overlay">
-                                <div class="inner-box">
-                                    <ul class="content">
-                                        <li><a href="images/service/4.jpg" class="lightbox-image"><i
-                                                    class="fa fa-search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 filter-item Consulting Marketing">
-                <div class="single-item filter-item">
-                    <div class="single-item-overlay">
-                        <div class="img-box">
-                            <a href="#"><img src="images/service/5.jpg" alt=""></a>
-                            <div class="overlay">
-                                <div class="inner-box">
-                                    <ul class="content">
-                                        <li><a href="images/service/5.jpg" class="lightbox-image"><i
-                                                    class="fa fa-search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 filter-item video">
-                <div class="single-item filter-item">
-                    <div class="single-item-overlay">
-                        <div class="img-box">
-                            <a href="#"><img src="images/service/6.jpg" alt=""></a>
-                            <div class="overlay">
-                                <div class="inner-box">
-                                    <ul class="content">
-                                        <li><a href="images/service/6.jpg" class="lightbox-image"><i
-                                                    class="fa fa-search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 <!-- project section end -->
+
 
 
 {% endblock %}

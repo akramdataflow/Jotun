@@ -188,4 +188,9 @@ def contact(request):
 def about(request):
     return render(request,'about.html')
 
+def color(request):
+    colores = Color.objects.all()
+    context = {'colores':colores}
+    return render(request, 'color.html', context)
+
 

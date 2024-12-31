@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from colorfield.fields import ColorField
+import csv
 
 
 # Create your models here.
@@ -9,6 +10,22 @@ class Color(models.Model):
     name = models.CharField(max_length=100)  # Color name (e.g., "Red")
     number = models.DecimalField(max_digits=10, decimal_places=2)  # Color number, can be used for a color code
     hex_value = models.CharField(max_length=10)  # Hex value of the color (e.g., "#FF0000" for red)
+
+    @staticmethod
+    def import_colors_from_csv(csv_file_path):
+        with open(csv_file_path, mode='r', newline='', encoding='utf-8') as file:
+            csv_reader = csv.DictReader(file)
+            
+            for row in csv_reader:
+                color, created = Color.objects.get_or_create(
+                    number=row['Colour Number'],
+                    name=row['Colour Name'],
+                    hex_value=row['Hex']
+                )
+                if created:
+                    print(f"تم إضافة اللون: {row['Colour Name']} ({row['Colour Number']})")
+                else:
+                    print(f"اللون {row['Colour Name']} موجود بالفعل.")
 
     def __str__(self):
         return f"{self.name} - {self.number} - {self.hex_value}"

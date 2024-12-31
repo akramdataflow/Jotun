@@ -503,7 +503,6 @@ h6 a:hover{
 
 .main-menu .navigation > li:hover > a,.main-menu .navigation > li.current > a,
 .main-menu .navbar-collapse > ul li.dropdown.current .dropdown-btn span:before{
-  color: #da8e3c;
   transition: all 500ms ease;
 }
 
