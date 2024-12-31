@@ -4,6 +4,7 @@ import stripe
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from .forms import SignUpForm
 from django.contrib import messages
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -168,5 +169,16 @@ def success(request):
 def cancel(request):
     return render(request, 'cancel.html')
 
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])  # تشفير كلمة المرور
+            user.save()
+            return redirect('login')
+    else:
+        form = SignUpForm()
 
+    return render(request, 'signup.html', {'form': form})
 
