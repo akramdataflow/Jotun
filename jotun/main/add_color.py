@@ -1,6 +1,5 @@
 import os
 import django
-import csv
 
 # تحديد إعدادات Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jotun.settings")
@@ -8,8 +7,9 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jotun.settings")
 # تهيئة Django
 django.setup()
 
-# استيراد نموذج Color بعد تهيئة Django
+# استيراد النماذج بعد تهيئة Django
 from main.models import Color
+import csv
 
 # تحديد مسار الملف CSV
 csv_file_path = r'C:\Users\rf\Desktop\python\Jotun\576_exterior_colours_with_hex.csv'

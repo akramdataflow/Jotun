@@ -8,7 +8,7 @@ import csv
 
 class Color(models.Model):
     name = models.CharField(max_length=100)  # Color name (e.g., "Red")
-    number = models.DecimalField(max_digits=100)  # Color number, can be used for a color code
+    number = models.CharField(max_length=100)  # Color number, can be used for a color code
     hex_value = models.CharField(max_length=10)  # Hex value of the color (e.g., "#FF0000" for red)
 
     @staticmethod
