@@ -17,7 +17,19 @@ def main_view(request):
 
 def products(request):
     categorys = Category.objects.all()
-    context = {'categorys': categorys}
+    selected_category = request.GET.get('category', None)
+    
+    if selected_category:
+        category = Category.objects.get(id=selected_category)
+        products = Products.objects.filter(category=category)
+    else:
+        products = Products.objects.all()
+
+    context = {
+        'categorys': categorys,
+        'products': products,
+    }
+    
     return render(request, 'products.html', context)
 
 def details(request,name):

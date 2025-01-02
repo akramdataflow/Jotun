@@ -26,13 +26,11 @@
             <div class="col-md-4 col-sm-6 col-xs-12 filter-item">
                 <div class="single-item filter-item">
                     <div class="single-item-overlay">
-                        <div class="img-box" style="background-color: {{ color.hex_value }};">
+                        <div class="img-box" style="background-color: {{ color.hex_value }}; height: 360px;">
                             <a href="#"><img src="images/service/1.jpg" alt=""></a>
-                            <div class="overlay">
-                                <h3>{{ color.number|int }}</h3>
-                            </div>
-                            <h3>{{color.name}}</h3>
                         </div>
+                        {{ color.number }}
+                        <h3>{{color.name}}</h3>
                     </div>
                 </div>
             </div>
