@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
 import stripe
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
@@ -40,7 +41,6 @@ def details(request,name):
 
 
 def card(request):
-
     # جلب جميع التصنيفات
     categorys = Category.objects.all()
 
@@ -51,11 +51,16 @@ def card(request):
     cart_items = cart.items.all()
     total_price = sum(item.get_total_price() for item in cart_items)
 
+    # جلب قائمة الألوان المتاحة
+    colors = Color.objects.all()
+
+    # تمرير الألوان و العناصر المعدلة
     context = {
         'categorys': categorys,
         'cart': cart,
         'cart_items': cart_items,
         'total_price': total_price,
+        'colors': colors,
     }
     return render(request, 'card.html', context)
 
@@ -205,4 +210,19 @@ def color(request):
     context = {'colores':colores}
     return render(request, 'color.html', context)
 
+def update_color(request, product_id):
+    if request.method == 'POST':
+        color_id = request.POST.get('color')
+        color = get_object_or_404(Color, id=color_id)
 
+        # جلب عنصر الطلب (OrderItem) بناءً على المنتج والمستخدم
+        order_item = OrderItem.objects.filter(product_id=product_id, order__user=request.user).first()
+        
+        if not order_item:
+            return HttpResponseNotFound("لم يتم العثور على العنصر في الطلب.")
+
+        # تحديث اللون في OrderItem
+        order_item.color = color
+        order_item.save()
+
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

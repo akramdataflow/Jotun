@@ -69,35 +69,54 @@
                                <th class="cart-product-name">اسم المنتج</th>
                                <th class="product-price">سعر القطعة</th>
                                <th class="product-quantity">العدد</th>
-                               <th class="product-subtotal">الكلي</th>
+                               <th class="product-subtotal">اللون</th>
+                               <th class="product-remove">الكلي</th>
                                <th class="product-remove">حذف</th>
-                            </tr>
+                              </tr>
                          </thead>
                          <tbody>
-                            {% for item in cart_items %}
-                            <tr>
-                               <td class="product-thumbnail"><a href="product-details.html"><img
-                                        src="{{ item.product.image.url }}" alt="img"></a></td>
-                               <td class="product-name"><a href="product-details.html">{{ item.product.name }}</a></td>
-                               <td class="product-price"><span class="amount">${{ item.product.price }}</span></td>
+                           {% for item in cart_items %}
+                           <tr>
+                               <td class="product-thumbnail">
+                                       <img src="{{ item.product.image.url }}" alt="img">
+                               </td>
+                               <td class="product-name">{{ item.product.name }}
+                               </td>
+                               <td class="product-price">
+                                   <span class="amount">${{ item.product.price }}</span>
+                               </td>
                                <td class="product-quantity text-center">
-                                 <div class="product-quantity mt-10 mb-10">
-                                     <a href="{% url 'increase_quantity' item.product.id %}" class="btn btn-sm btn-success">+</a>
-                                     <span>{{ item.quantity }}</span>
-                                     <a href="{% url 'decrease_quantity' item.product.id %}" class="btn btn-sm btn-danger">-</a>
-                                 </div>
-                             </td>
-                               <td class="product-subtotal"><span class="amount">${{ item.get_total_price }}</span></td>
-                               <td class="product-remove">
-                                 <form method="POST" action="{% url 'remove_from_cart' item.product.id %}">
+                                   <div class="product-quantity mt-10 mb-10">
+                                       <a href="{% url 'increase_quantity' item.product.id %}" class="btn btn-sm btn-success">+</a>
+                                       <span>{{ item.quantity }}</span>
+                                       <a href="{% url 'decrease_quantity' item.product.id %}" class="btn btn-sm btn-danger">-</a>
+                                   </div>
+                               </td>
+                               <td class="product-color">
+                                 <form method="POST" action="{% url 'update_color' item.product.id %}">
                                      {% csrf_token %}
-                                     <button type="submit" style="border: none; background: none;">
-                                         <i class="fa fa-times" style="color: red; cursor: pointer;"></i>
-                                     </button>
+                                     <select name="color" class="form-control" onchange="this.form.submit()">
+                                         {% for color in colors %}
+                                             <option value="{{ color.number }}" {% if color.number == item.color.number %}selected{% endif %}>
+                                                 {{ color.name }} - {{ color.number }}
+                                             </option>
+                                         {% endfor %}
+                                     </select>
                                  </form>
-                             </td>
-                            </tr>
-                            {% endfor %}
+                              </td>
+                               <td class="product-subtotal">
+                                   <span class="amount">${{ item.get_total_price }}</span>
+                               </td>
+                               <td class="product-remove">
+                                   <form method="POST" action="{% url 'remove_from_cart' item.product.id %}">
+                                       {% csrf_token %}
+                                       <button type="submit" style="border: none; background: none;">
+                                           <i class="fa fa-times" style="color: red; cursor: pointer;"></i>
+                                       </button>
+                                   </form>
+                               </td>
+                           </tr>
+                       {% endfor %}
 
                          </tbody>
                       </table>
