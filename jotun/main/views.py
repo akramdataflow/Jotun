@@ -205,17 +205,25 @@ def color(request):
     context = {'colores':colores}
     return render(request, 'color.html', context)
 
-@login_required
 def update_color(request, item_id):
-    # احصل على الكائن CartItem باستخدام المعرف
-    cart_item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
-    
-    # تحقق مما إذا كان الطلب يحتوي على لون جديد
+    # التحقق من أن الطلب هو POST
     if request.method == 'POST':
-        new_color = request.POST.get('new_color')
-        
-        # تحديث اللون في الكائن
-        cart_item.color = new_color
-        cart_item.save()  # حفظ التغيير في قاعدة البيانات
-        
-    return redirect('cart')  # إعادة توجيه المستخدم إلى سلة التسوق
+        # الحصول على اللون الجديد من البيانات المرسلة
+        new_color_value = request.POST.get('new_color')
+
+        if new_color_value:
+            # الحصول على الـ CartItem من قاعدة البيانات باستخدام الـ item_id
+            cart_item = get_object_or_404(CartItem, id=item_id)
+
+            # تحديث اللون الجديد للـ CartItem
+            cart_item.color = new_color_value
+            cart_item.save()
+
+            # إعادة التوجيه إلى صفحة السلة أو أي صفحة مناسبة أخرى
+            return redirect('cart')
+        else:
+            # إذا لم يكن هناك لون جديد مرسل
+            return redirect('cart')  # يمكنك تعديلها إلى الصفحة المناسبة
+    else:
+        # إذا كانت الطلب ليس POST، يمكنك إظهار المنتج أو التعامل مع الخطأ
+        return redirect('cart')
