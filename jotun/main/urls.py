@@ -21,6 +21,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('color/', views.color, name='color'),
-    path('update-color/<int:product_id>/', views.update_color, name='update_color'),  # التأكد من أن الاسم يتطابق
+    path('update-color/<int:item_id>/', views.update_color, name='update_color'),
+    path('cart/', views.card, name='cart'),
 ]
 

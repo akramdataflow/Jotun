@@ -68,18 +68,13 @@ def card(request):
 @login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Products, id=product_id)
+    color = request.POST.get('color')  # الحصول على اللون المختار
     cart, created = Cart.objects.get_or_create(user=request.user)
-
-    # تحقق إذا كان المنتج موجودًا في السلة
-    cart_item, item_created = CartItem.objects.get_or_create(cart=cart, product=product)
-    if not item_created:
-        # زيادة الكمية إذا كان المنتج موجودًا مسبقًا
-        cart_item.quantity += 1
-        cart_item.save()
-
-    # إعادة المستخدم إلى الصفحة السابقة
-    previous_url = request.META.get('HTTP_REFERER', 'home')
-    return redirect(previous_url)
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if created:
+        cart_item.color = color
+    cart_item.save()
+    return redirect('cart')
 
 @login_required
 def increase_quantity(request, product_id):
@@ -210,19 +205,17 @@ def color(request):
     context = {'colores':colores}
     return render(request, 'color.html', context)
 
-def update_color(request, product_id):
+@login_required
+def update_color(request, item_id):
+    # احصل على الكائن CartItem باستخدام المعرف
+    cart_item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
+    
+    # تحقق مما إذا كان الطلب يحتوي على لون جديد
     if request.method == 'POST':
-        color_id = request.POST.get('color')
-        color = get_object_or_404(Color, id=color_id)
-
-        # جلب عنصر الطلب (OrderItem) بناءً على المنتج والمستخدم
-        order_item = OrderItem.objects.filter(product_id=product_id, order__user=request.user).first()
+        new_color = request.POST.get('new_color')
         
-        if not order_item:
-            return HttpResponseNotFound("لم يتم العثور على العنصر في الطلب.")
-
-        # تحديث اللون في OrderItem
-        order_item.color = color
-        order_item.save()
-
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        # تحديث اللون في الكائن
+        cart_item.color = new_color
+        cart_item.save()  # حفظ التغيير في قاعدة البيانات
+        
+    return redirect('cart')  # إعادة توجيه المستخدم إلى سلة التسوق

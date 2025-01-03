@@ -12,6 +12,7 @@
  
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets1/imgs/favicon.png' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
  
     <!-- CSS here -->
     <link rel="stylesheet" href="{% static 'assets1/css/bootstrap.min.css' %}">
@@ -93,17 +94,17 @@
                                    </div>
                                </td>
                                <td class="product-color">
-                                 <form method="POST" action="{% url 'update_color' item.product.id %}">
+                                 <form method="POST" action="{% url 'update_color' item.id %}">
                                      {% csrf_token %}
-                                     <select name="color" class="form-control" onchange="this.form.submit()">
+                                     <select name="new_color" id="color-select" onchange="this.form.submit()">
                                          {% for color in colors %}
-                                             <option value="{{ color.number }}" {% if color.number == item.color.number %}selected{% endif %}>
-                                                 {{ color.name }} - {{ color.number }}
+                                             <option value="{{ color.number }}" {% if color.number == item.color %}selected{% endif %}>
+                                                 {{ color.number }}
                                              </option>
                                          {% endfor %}
                                      </select>
                                  </form>
-                              </td>
+                             </td>
                                <td class="product-subtotal">
                                    <span class="amount">${{ item.get_total_price }}</span>
                                </td>
@@ -164,6 +165,9 @@
     <script src="{% static 'assets1/js/ajax-form.js' %}"></script>
     <script src="{% static 'assets1/js/beforeafter.jquery-1.0.0.min.js' %}"></script>
     <script src="{% static 'assets1/js/main.js' %}"></script>
+    <!-- إضافة JavaScript لـ Select2 -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
  </body>
  </html>
 
