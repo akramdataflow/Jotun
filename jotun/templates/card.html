@@ -84,7 +84,7 @@
                                <td class="product-name">{{ item.product.name }}
                                </td>
                                <td class="product-price">
-                                   <span class="amount">${{ item.product.price }}</span>
+                                   <span class="amount">دينار عراقي {{ item.product.price }}</span>
                                </td>
                                <td class="product-quantity text-center">
                                    <div class="product-quantity mt-10 mb-10">
@@ -98,15 +98,15 @@
                                      {% csrf_token %}
                                      <select name="new_color" id="color-select" onchange="this.form.submit()">
                                          {% for color in colors %}
-                                             <option value="{{ color.number }}" {% if color.number == item.color %}selected{% endif %}>
-                                                 {{ color.number }}
+                                             <option style="background-color: {{ color.hex_value }}" value="{{ color.number }}" {% if color.number == item.color %}selected{% endif %}>
+                                                 <span>{{ color.number }} - {{ color.name }}</span>
                                              </option>
                                          {% endfor %}
                                      </select>
                                  </form>
                              </td>
                                <td class="product-subtotal">
-                                   <span class="amount">${{ item.get_total_price }}</span>
+                                   <span class="amount">دينار عراقي {{ item.get_total_price }}</span>
                                </td>
                                <td class="product-remove">
                                    <form method="POST" action="{% url 'remove_from_cart' item.product.id %}">
@@ -127,7 +127,7 @@
                          <div class="cart-page-total">
                             <h2>المبلغ النهائي</h2>
                             <ul class="mb-20">
-                               <li>المجموع <span>${{ total_price }}</span></li>
+                               <li>المجموع <span>دينار {{ total_price }}</span></li>
                             </ul>
                             <form method="POST" action="{% url 'payment_page' %}">
                               {% csrf_token %}

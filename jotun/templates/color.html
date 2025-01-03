@@ -23,14 +23,13 @@
     <div class="container">
         <div class="row masonary-layout filter-layout">
             {% for color in colores %}
-            <div class="col-md-4 col-sm-6 col-xs-12 filter-item">
+            <div class="col-md-2 col-sm-4 col-xs-6 filter-item">
                 <div class="single-item filter-item">
                     <div class="single-item-overlay">
-                        <div class="img-box" style="background-color: {{ color.hex_value }}; height: 150px;">
-                            <a href="#"><img src="images/service/1.jpg" alt=""></a>
+                        <div class="img-box" style="background-color: {{ color.hex_value }}; height: 100px;">
+                            <h3>{{color.name}}</h3>
                         </div>
                         {{ color.number }}
-                        <h3>{{color.name}}</h3>
                     </div>
                 </div>
             </div>

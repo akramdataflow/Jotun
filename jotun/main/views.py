@@ -181,7 +181,7 @@ def success(request):
     # تنظيف السلة
     cart.items.all().delete()
 
-    return render(request, 'index.html', {'order': order})
+    return redirect('home')
 
 @login_required
 def cancel(request):
