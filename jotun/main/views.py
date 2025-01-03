@@ -68,13 +68,18 @@ def card(request):
 @login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Products, id=product_id)
-    color = request.POST.get('color')  # الحصول على اللون المختار
+    color = request.POST.get('color', '0001')  # تعيين اللون الافتراضي إذا كان فارغًا
     cart, created = Cart.objects.get_or_create(user=request.user)
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
-    if created:
+    
+    # تعيين اللون فقط إذا كان العنصر جديدًا أو لم يكن له لون مسبقًا
+    if created or not cart_item.color:
         cart_item.color = color
+    
     cart_item.save()
-    return redirect('cart')
+    
+    # إعادة توجيه إلى الصفحة الحالية
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 @login_required
 def increase_quantity(request, product_id):
@@ -169,7 +174,8 @@ def success(request):
             order=order,
             product=item.product,
             quantity=item.quantity,
-            price=item.get_total_price()
+            price=item.get_total_price(),
+            color=item.color  # إضافة اللون
         )
     
     # تنظيف السلة
