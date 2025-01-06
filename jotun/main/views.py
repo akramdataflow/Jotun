@@ -1,14 +1,24 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
 import stripe
-from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.http import HttpResponseRedirect, JsonResponse
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
 from django.contrib import messages
+import json
+import requests
+import uuid
+from requests.auth import HTTPBasicAuth
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
+# بيانات الاعتماد لبوابة الدفع QiCard
+USERNAME = "mwtest"
+PASSWORD = "WHaNFE5C3qlChqNbAzH4"
+X_TERMINAL_ID = "111111"
 
 # Create your views here.
 def main_view(request):
@@ -128,34 +138,61 @@ def remove_from_cart(request, product_id):
 
 @login_required
 def payment_page(request):
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    cart_items = cart.items.all()
-    total_price = sum(item.get_total_price() for item in cart_items)
+    # بيانات السلة: يمكن استبدال هذه البيانات بالقيم الحقيقية
+    cart_items = [
+        {"name": "Product 1", "quantity": 2, "price": 50.00},
+        {"name": "Product 2", "quantity": 1, "price": 150.00},
+        {"name": "Product 3", "quantity": 1, "price": 56.89}
+    ]
+    
+    # حساب المجموع الكلي للسعر بناءً على العناصر في السلة
+    total_price = sum(item['quantity'] * item['price'] for item in cart_items)
 
-    if request.method == "POST":
-        # تحويل المبلغ إلى سنتات
-        total_price_cents = int(total_price * 100)
+    if request.method == 'POST':
+        # معرّف الطلب الفريد
+        request_id = str(uuid.uuid4())
 
-        # إنشاء جلسة دفع
-        session = stripe.checkout.Session.create(
-            payment_method_types=["card"],  # دعم الدفع بالبطاقات
-            line_items=[{
-                "price_data": {
-                    "currency": "usd",  # العملة
-                    "product_data": {
-                        "name": "Cart Payment",  # اسم المنتج
-                    },
-                    "unit_amount": total_price_cents,  # المجموع بالسنتات
-                },
-                "quantity": 1,  # الكمية
-            }],
-            mode="payment",
-            success_url="http://127.0.0.1:8000/success/",  # رابط النجاح
-            cancel_url="http://127.0.0.1:8000/cancel/",    # رابط الإلغاء
+        # بيانات المصادقة
+        username = "mwtest"
+        password = "WHaNFE5C3qlChqNbAzH4"
+
+        # الرؤوس
+        headers = {
+            "Content-Type": "application/json",
+            "X-Terminal-Id": "111111"  # استبدل بالمعرف الخاص بك
+        }
+
+        # بيانات الطلب
+        data = {
+            "requestId": request_id,
+            "amount": total_price,  # المبلغ بالـ IQD
+            "currency": "IQD",
+            "locale": "en_US",
+            "finishPaymentUrl": "https://merchant.net/finish",  # رابط الانتهاء من الدفع
+            "notificationUrl": "https://merchant.net/notification",  # رابط الإشعار
+        }
+
+        # إرسال الطلب باستخدام Basic Auth
+        response = requests.post(
+            "https://uat-sandbox-3ds-api.qi.iq/api/v1/payment", 
+            headers=headers, 
+            data=json.dumps(data),
+            auth=HTTPBasicAuth(username, password)
         )
-        return redirect(session.url)  # إعادة التوجيه إلى صفحة الدفع الجاهزة
+
+        if response.status_code == 200:
+            # إذا تم الدفع بنجاح، يمكن إعادة التوجيه إلى صفحة النجاح
+            return redirect(response.json().get("formUrl"))
+        else:
+            # إذا فشل الطلب، إرجاع رسالة خطأ
+            return JsonResponse({"error": "Request failed", "details": response.json()}, status=response.status_code)
 
     return render(request, 'payment_page.html', {'cart_items': cart_items, 'total_price': total_price})
+
+
+
+
+
 
 @login_required
 def success(request):

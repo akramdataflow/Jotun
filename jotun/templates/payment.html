@@ -1,14 +1,40 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>الدفع</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
 </head>
 <body>
-    <h1>الدفع 50 دولار</h1>
+    <h1>Payment Page</h1>
+
+    <h2>Your Cart</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price }} IQD</td>
+                    <td>{{ item.quantity * item.price }} IQD</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><strong>Total Price: </strong>{{ total_price }} IQD</p>
+
     <form method="POST">
         {% csrf_token %}
-        <button type="submit">ادفع الآن</button>
+        <button type="submit">Proceed to Payment</button>
     </form>
 </body>
 </html>
