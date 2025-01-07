@@ -5,20 +5,22 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm
 from django.contrib import messages
 import json
 import requests
 import uuid
 from requests.auth import HTTPBasicAuth
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
+from .forms import SignupForm
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-# بيانات الاعتماد لبوابة الدفع QiCard
-USERNAME = "mwtest"
-PASSWORD = "WHaNFE5C3qlChqNbAzH4"
-X_TERMINAL_ID = "111111"
+
+
+
 
 # Create your views here.
 def main_view(request):
@@ -138,15 +140,14 @@ def remove_from_cart(request, product_id):
 
 @login_required
 def payment_page(request):
-    # بيانات السلة: يمكن استبدال هذه البيانات بالقيم الحقيقية
-    cart_items = [
-        {"name": "Product 1", "quantity": 2, "price": 50.00},
-        {"name": "Product 2", "quantity": 1, "price": 150.00},
-        {"name": "Product 3", "quantity": 1, "price": 56.89}
-    ]
+    # جلب السلة المرتبطة بالمستخدم الحالي
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    
+    # جلب العناصر من السلة
+    cart_items = CartItem.objects.filter(cart=cart)
     
     # حساب المجموع الكلي للسعر بناءً على العناصر في السلة
-    total_price = sum(item['quantity'] * item['price'] for item in cart_items)
+    total_price = sum(item.quantity * item.product.price for item in cart_items)
 
     if request.method == 'POST':
         # معرّف الطلب الفريد
@@ -165,7 +166,7 @@ def payment_page(request):
         # بيانات الطلب
         data = {
             "requestId": request_id,
-            "amount": total_price,  # المبلغ بالـ IQD
+            "amount": float(total_price),  # Convert Decimal to float
             "currency": "IQD",
             "locale": "en_US",
             "finishPaymentUrl": "https://merchant.net/finish",  # رابط الانتهاء من الدفع
@@ -181,14 +182,14 @@ def payment_page(request):
         )
 
         if response.status_code == 200:
-            # إذا تم الدفع بنجاح، يمكن إعادة التوجيه إلى صفحة النجاح
-            return redirect(response.json().get("formUrl"))
+            payment_data = response.json()
+            payment_id = payment_data.get("paymentId")
+            print(f"Payment ID: {payment_id}")  # طباعة الـ payment_id
+            return redirect(payment_data.get("formUrl"))
         else:
-            # إذا فشل الطلب، إرجاع رسالة خطأ
             return JsonResponse({"error": "Request failed", "details": response.json()}, status=response.status_code)
 
     return render(request, 'payment_page.html', {'cart_items': cart_items, 'total_price': total_price})
-
 
 
 
@@ -226,16 +227,20 @@ def cancel(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])  # تشفير كلمة المرور
-            user.save()
-            return redirect('login')
+            # حفظ النموذج
+            user = form.save()
+            
+            # تسجيل الدخول بعد إنشاء الحساب
+            login(request, user)
+            
+            # إعادة التوجيه إلى الصفحة الرئيسية أو أي مكان آخر
+            return redirect('home')
     else:
-        form = SignUpForm()
-
-    return render(request, 'signup.html', {'form': form})
+        form = SignupForm()
+    
+    return render(request, 'registration/signup.html', {'form': form})
 
 def contact(request):
     return render(request,'contact.html')
