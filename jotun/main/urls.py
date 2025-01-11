@@ -23,5 +23,6 @@ urlpatterns = [
     path('color/', views.color, name='color'),
     path('update-color/<int:item_id>/', views.update_color, name='update_color'),
     path('cart/', views.card, name='cart'),
+    path('webhook/payment/', views.payment_webhook, name='payment_webhook'),
 ]
 
